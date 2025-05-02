@@ -11,6 +11,11 @@ const Gameboard = (() => {
 
   const resetBoard = () => {
     board = createArray(rows).map(() => createArray(columns, ''));
+    board = [
+      ['x', 'x', 'o'],
+      ['' , 'o', 'x'],
+      ['o', 'x', 'x'],
+    ];
   };
 
   const isPosCorrect = ({x, y}) => x >= columns || x < 0 || y >= rows || y < 0;
@@ -40,7 +45,7 @@ const Gameboard = (() => {
       [{x: 2, y: 0}, {x: 2, y: 1}, {x: 2, y: 2}],
       // diagonal patterns
       [{x: 0, y: 0}, {x: 1, y: 1}, {x: 2, y: 2}],
-      [{x: 2, y: 2}, {x: 1, y: 1}, {x: 0, y: 0}],
+      [{x: 0, y: 2}, {x: 1, y: 1}, {x: 2, y: 0}],
     ];
 
     for (let player of players) {
@@ -62,4 +67,4 @@ const Gameboard = (() => {
   return { getBoard, resetBoard, checkWinner, setCell, getCell, size: {width: columns, height: rows} };
 })();
 
-Gameboard.checkWinner()
+console.log(Gameboard.checkWinner({mark: 'o'}, {mark: 'x'}));
