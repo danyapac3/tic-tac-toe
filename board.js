@@ -9,14 +9,26 @@ const createBoard = (() => {
 
   const resetBoard = () => {
     board = createArray(rows).map(() => createArray(columns, ''));
+    // dev
     board = [
-      ['x', 'x', 'o'],
+      ['x', 'x', ''],
       ['' , 'x', 'o'],
       ['o', 'x', 'o'],
     ];
+    // ***
   };
 
+
+  const getAvailableCells = () => board.flat().reduce((acc, cell, index) => {
+    if (!cell) {
+      acc.push({ x: index % columns, y: Math.floor(index / columns)});
+    }
+    return acc;
+  }, []);
+
+
   const isPosCorrect = ({x, y}) => x >= columns || x < 0 || y >= rows || y < 0;
+
 
   const setCell = (mark, pos) => {
     if (isPosCorrect(pos)) throw new Error('pos is out of bounds');
@@ -24,11 +36,13 @@ const createBoard = (() => {
     board[pos.y][pos.x] = mark;
   }
 
+
   const getCell = (pos) => {
     if (isPosCorrect(pos)) throw new Error('pos is out of bounds');
 
     return board[pos.y][pos.x];
   };
+
 
   const checkWinner = (player1, player2) => {
     const players = [player1, player2];
@@ -62,7 +76,14 @@ const createBoard = (() => {
 
   resetBoard();
 
-  return { getBoard, resetBoard, checkWinner, setCell, getCell };
+  return { 
+    getBoard,
+    resetBoard,
+    checkWinner,
+    setCell,
+    getCell,
+    getAvailableCells
+  };
 });
 
 export default createBoard;
