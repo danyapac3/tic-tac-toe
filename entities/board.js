@@ -1,4 +1,4 @@
-import { createArray } from './utils/array.js';
+import { createArray } from '../utils/array.js';
 
 const createBoard = (() => {
   const columns = 3;
