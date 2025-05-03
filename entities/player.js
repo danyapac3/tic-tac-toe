@@ -5,3 +5,6 @@ const createPlayer = (mark, name, controller) => {
 
   return {name, mark, playTurn};
 }
+
+export default createPlayer
+export { createPlayer }

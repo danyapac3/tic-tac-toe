@@ -1,10 +1,9 @@
 export default function controller (board, callback) {
   const cells = board.getAvailableCells();
 
-  if (cells.length === 0)
-    throw new Error('There is cells available');
+  const cellPos = cells.length 
+    ? cells[Math.floor(Math.random() * cells.length)]
+    : null
 
-  const cellPos = cells[Math.floor(Math.random() * cells.length)];
-
-  callback(cellPos);
+  setTimeout(() => callback(cellPos), 500);
 }

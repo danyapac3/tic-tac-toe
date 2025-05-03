@@ -5,19 +5,13 @@ const createBoard = (() => {
   const rows = 3;
   let board = null;
 
+  const getString = () => JSON.stringify(board);
+
   const getBoard = () => board;
 
   const resetBoard = () => {
     board = createArray(rows).map(() => createArray(columns, ''));
-    // dev
-    board = [
-      ['x', 'x', ''],
-      ['' , 'x', 'o'],
-      ['o', 'x', 'o'],
-    ];
-    // ***
   };
-
 
   const getAvailableCells = () => board.flat().reduce((acc, cell, index) => {
     if (!cell) {
@@ -82,7 +76,8 @@ const createBoard = (() => {
     checkWinner,
     setCell,
     getCell,
-    getAvailableCells
+    getString,
+    getAvailableCells,
   };
 });
 
