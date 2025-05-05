@@ -38,7 +38,7 @@ const createBoard = (() => {
   };
 
 
-  const checkWinner = (player1, player2) => {
+  const getWinner = (player1, player2) => {
     const players = [player1, player2];
     const patterns = [
       // row patterns
@@ -73,7 +73,7 @@ const createBoard = (() => {
   return { 
     getBoard,
     resetBoard,
-    checkWinner,
+    getWinner,
     setCell,
     getCell,
     getString,

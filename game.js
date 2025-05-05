@@ -1,10 +1,4 @@
-import createBoard from "./entities/board.js";
-import createPlayer from "./entities/player.js";
-import playerController from "./controllers/player/random.js";
-
-console.clear();
-
-const createGame = (player1, player2, board) => {
+const createGame = (player1, player2, board, display = null, onOver = () => {}) => {
   let currentPlayer = player1;
 
   const turnHandler = (pos) => {
@@ -12,18 +6,30 @@ const createGame = (player1, player2, board) => {
     if (pos) {
       board.setCell(currentPlayer.mark, pos);
     }
-    
-    console.log(board.getString());
-    const isFull = !board.getAvailableCells().length;
-    if (!isFull) {
-      currentPlayer.playTurn(board, turnHandler);
+
+    if (display !== null) {
+      display.update(board);
     }
 
+    const isFull = !board.getAvailableCells().length;
+    const winner = board.getWinner(player1, player2);
+    if (!isFull && !winner) {
+      currentPlayer.playTurn(board, turnHandler);
+    } else {
+      onOver(winner);
+    }
   }
-  currentPlayer.playTurn(board, turnHandler);
+
+  const play = () => {
+    currentPlayer = player1;
+    board.resetBoard();
+    display.update();
+
+    currentPlayer.playTurn(board, turnHandler);
+  }
+
+  return { play };
 }
 
-const p1 = createPlayer('x', 'Danya', playerController);
-const p2 = createPlayer('o', 'Danya', playerController);
-const gameBoard = createBoard();
-const game = createGame(p1, p2, gameBoard);
+export { createGame };
+export default createGame ;
