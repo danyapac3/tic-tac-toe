@@ -6,13 +6,19 @@ const $gameBoard = document.querySelector(".game-board");
 const $cells = $gameBoard.querySelectorAll(".game-board__cell");
 
 const createDisplayController = (board, player1, player2) => {
+  const reset = () => {
+    Array.from($cells).forEach($cell => {
+      $cell.dataset.mark = "";
+    });
+  }
+
   const update = () => {
     board.getBoard().flat().forEach((cell, index) => {
         $cells[index].dataset.mark = cell;
     });
   }
-
-  return { update }
+  
+  return { update, reset }
 };
 
 
