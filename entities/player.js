@@ -1,6 +1,5 @@
 const createPlayer = (mark, name, controller) => {
-  console.log(controller);
-  return {name, mark, playTurn: controller.playTurn};
+  return {name, mark, controller};
 }
 
 export default createPlayer

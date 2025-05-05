@@ -17,7 +17,7 @@ const createGame = (player1, player2, board, display = null) => {
     const isFull = !board.getAvailableCells().length;
     const winner = board.getWinner(player1, player2);
     if (!isFull && !winner) {
-      currentPlayer.playTurn(board, turnHandler);
+      currentPlayer.controller.playTurn(board, turnHandler);
     } else {
       isOver = true;
       onOver(winner);
@@ -32,7 +32,7 @@ const createGame = (player1, player2, board, display = null) => {
     board.resetBoard();
     display.update();
 
-    currentPlayer.playTurn(board, turnHandler);
+    currentPlayer.controller.playTurn(board, turnHandler);
   }
 
   const setOnOver = (fn) => {
