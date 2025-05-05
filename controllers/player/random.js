@@ -5,5 +5,5 @@ export default function controller (board, callback) {
     ? cells[Math.floor(Math.random() * cells.length)]
     : null
 
-  setTimeout(() => callback(cellPos), 20);
+  setTimeout(() => callback(cellPos), 500);
 }
