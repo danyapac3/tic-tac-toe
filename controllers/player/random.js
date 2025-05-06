@@ -13,7 +13,7 @@ const createController = () => {
       ? cells[Math.floor(Math.random() * cells.length)]
       : null
   
-    setTimeout(() => onTurn(cellPos), 500);
+    setTimeout(() => onTurn(cellPos), 200);
   }
 
   const abort = () => {

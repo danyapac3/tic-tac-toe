@@ -10,18 +10,18 @@ const createGame = (player1, player2, board, display = null) => {
       board.setCell(currentPlayer.mark, pos);
     }
 
-    if (display !== null) {
-      display.update(board);
-    }
-
     const isFull = !board.getAvailableCells().length;
     const winner = board.getWinner(player1, player2);
     if (!isFull && !winner) {
       currentPlayer.controller.playTurn(board, turnHandler);
     } else {
+      winner.increaseScore();
+      console.log(winner.getScore());
       isOver = true;
       onOver(winner);
     }
+
+    display.update(board);
   }
 
   const play = () => {
