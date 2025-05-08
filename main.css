@@ -128,7 +128,6 @@ body {
 }
 
 
-
 .play-round-button {
   background-color: greenyellow;
 }
@@ -137,6 +136,7 @@ body {
 .reset-game-button {
   background-color: rgb(251, 107, 78);
 }
+
 
 .info-dialog:open {
   width: 250px;

@@ -2,11 +2,12 @@ import { createGame } from "./game.js";
 import { createPlayer } from "./entities/player.js";
 import { createBoard } from "./entities/board.js";
 import { createDisplayController } from "./controllers/display.js";
-import createPlayerController from "./controllers/player/random.js";
+import { createRandomPlayerController } from "./controllers/player/random.js";
+import { createHumanPlayerController } from "./controllers/player/human.js";
 import renderInfoModal from "./components/info-modal.js"
 
-const p1 = createPlayer('x', 'Danya', createPlayerController());
-const p2 = createPlayer('o', 'Danya', createPlayerController());
+const p1 = createPlayer('x', 'Danya', createRandomPlayerController());
+const p2 = createPlayer('o', 'Dan', createHumanPlayerController());
 const gameBoard = createBoard();
 const display = createDisplayController(gameBoard, p1, p2);
 const game = createGame(p1, p2, gameBoard, display);

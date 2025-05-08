@@ -16,6 +16,7 @@ const createGame = (player1, player2, board, display = null) => {
 
     const isFull = !board.getAvailableCells().length;
     const winner = board.getWinner(player1, player2);
+    currentPlayer = toggledPlayer(currentPlayer);
     if (!isFull && !winner) {
       currentPlayer.controller.playTurn(board, turnHandler);
     } else {
@@ -24,7 +25,6 @@ const createGame = (player1, player2, board, display = null) => {
       onOver(winner);
     }
 
-    currentPlayer = toggledPlayer(currentPlayer);
     display.update(board);
   }
 

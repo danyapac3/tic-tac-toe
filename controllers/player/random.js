@@ -1,4 +1,4 @@
-const createController = () => {
+const createRandomPlayerController = () => {
   let timeoutID;
 
   const playTurn = (board, onTurn) => {
@@ -6,16 +6,17 @@ const createController = () => {
   
     const cellPos = cells.length 
       ? cells[Math.floor(Math.random() * cells.length)]
-      : null
+      : null;
   
     timeoutID = setTimeout(() => onTurn(cellPos), 200);
   }
 
   const abort = () => {
-    clearTimeout(timeoutID)
+    clearTimeout(timeoutID);
   }
 
   return { playTurn, abort };
 }
 
-export default createController;
+export default createRandomPlayerController;
+export { createRandomPlayerController };
