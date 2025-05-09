@@ -1,9 +1,12 @@
 import { createElementFromTemplate } from "../utils/dom.js";
 
 const template = /*html*/`
-<dialog class="info-dialog">
-  <div class="info-dialog__text"></div>
-  <button class="info-dialog__ok-button">ok</button>
+<dialog class="pick-players-dialog">
+  <div class="pick-player-block">
+    
+  </div>
+  <div class="pick-players-dialog__text"></div>
+  <button class="pick-players-dialog__ok-button">ok</button>
 </dialog>
 `.trim();
 

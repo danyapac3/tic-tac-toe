@@ -39,6 +39,44 @@
         <button class="reset-game-button button">reset game</button>
       </div>
     </div>
+
+    <dialog class="players-select-modal">
+      <div class="players-select-modal__player-form player-form">
+        <div class="player-name-group">
+          <div class="player-name-group__label">Name:</div>
+          <input class="player-name-group__input" type="text" placeholder="Danya">
+        </div>
+
+        <div class="player-type-group radio-group">
+          <input type="radio" name="player-1-type" value="human" checked>
+          <input type="radio" name="player-1-type" value="computer">
+        </div>
+
+        <div class="player-mark-group radio-group">
+          <input type="radio" name="player-1-mark" value="x" checked>
+          <input type="radio" name="player-1-mark" value="o">
+        </div>
+      </div>
+
+      <div class="players-select-modal__player-form player-form">
+        <div class="player-name-group">
+          <div class="player-name-group__label">Name:</div>
+          <input class="player-name-group__input" type="text" placeholder="Danya">
+        </div>
+
+        <div class="player-type-group radio-group">
+          <input type="radio" name="player-2-type" value="human" checked>
+          <input type="radio" name="player-2-type" value="computer">
+        </div>
+
+        <div class="player-mark-group radio-group">
+          <input type="radio" name="player-2-mark" value="x" checked>
+          <input type="radio" name="player-2-mark" value="o">
+        </div>
+      </div>
+
+      <button class="select-players-button">select</button>
+    </dialog>
   </div>
   
   <script type="module" src="main.js"></script>

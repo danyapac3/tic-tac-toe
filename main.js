@@ -25,3 +25,6 @@ $resetGameButton.addEventListener('click', game.reset);
 game.setOnOver((winner) => { 
   $infoModal.showModalWithText(winner ? `${winner.name} won!!!` : 'Draw!!!');
 });
+
+const $modal = document.querySelector(".players-select-modal");
+$modal.showModal(); 
