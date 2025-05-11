@@ -27,7 +27,11 @@ $setPlayersModal.openModalWithPlayers(p1, p2);
 
 $setPlayersModal.addEventListener('close', display.updateNames);
 $playRoundButton.addEventListener('click', game.play);
-$resetGameButton.addEventListener('click', game.reset);
+$resetGameButton.addEventListener('click', () => {
+  game.reset();
+  $setPlayersModal.openModalWithPlayers(p1, p2);
+});
+
 game.setOnOver((winner) => { 
   $infoModal.showModalWithText(winner ? `${winner.name} won!!!` : 'Draw!!!');
 });

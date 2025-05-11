@@ -1,6 +1,7 @@
 import { createElementFromTemplate } from "../utils/dom.js";
 import createRandomPlayerController from "../controllers/player/random.js";
 import createHumanPlayerController from "../controllers/player/human.js";
+import createComputerPlayerController from "../controllers/player/computer.js";
 
 const template = /*html*/`
 <dialog class="set-players-modal">
@@ -13,7 +14,7 @@ const template = /*html*/`
     <div class="player-type-group radio-group">
       <input type="radio" name="player-1-type" value="human">
       <input type="radio" name="player-1-type" value="random" checked>
-      <input type="radio" name="player-1-type" value="computer" disabled>
+      <input type="radio" name="player-1-type" value="computer">
     </div>
 
     <div class="player-mark-group radio-group">
@@ -31,7 +32,7 @@ const template = /*html*/`
     <div class="player-type-group radio-group">
       <input type="radio" name="player-2-type" value="human">
       <input type="radio" name="player-2-type" value="random" checked>
-      <input type="radio" name="player-2-type" value="computer" disabled>
+      <input type="radio" name="player-2-type" value="computer">
     </div>
 
     <div class="player-mark-group radio-group">
@@ -70,7 +71,7 @@ const renderModal = () => {
     const controllerFactories = {
       "human": createHumanPlayerController,
       "random": createRandomPlayerController,
-      "computer": null,
+      "computer": createComputerPlayerController,
     };
 
     player.name = $nameInput.value;
