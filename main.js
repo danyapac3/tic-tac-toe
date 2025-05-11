@@ -7,8 +7,8 @@ import { createHumanPlayerController } from "./controllers/player/human.js";
 import renderInfoModal from "./components/info-modal.js";
 import renderSetPlayersModal from "./components/select-players-modal.js";
 
-const p1 = createPlayer('x', 'Danya', createRandomPlayerController());
-const p2 = createPlayer('o', 'Dan', createHumanPlayerController());
+const p1 = createPlayer('x', 'Player1', createRandomPlayerController());
+const p2 = createPlayer('o', 'Player2', createHumanPlayerController());
 const gameBoard = createBoard();
 const display = createDisplayController(gameBoard, p1, p2);
 const game = createGame(p1, p2, gameBoard, display);

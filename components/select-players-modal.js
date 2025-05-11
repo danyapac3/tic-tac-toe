@@ -7,13 +7,13 @@ const template = /*html*/`
   <div class="set-players-modal__player-form player-form">
     <div class="player-name-group">
       <div class="player-name-group__label">Name:</div>
-      <input class="player-name-group__input" type="text" placeholder="Danya">
+      <input class="player-name-group__input" spellcheck="false" type="text" placeholder="Danya">
     </div>
 
     <div class="player-type-group radio-group">
       <input type="radio" name="player-1-type" value="human">
       <input type="radio" name="player-1-type" value="random" checked>
-      <input type="radio" name="player-1-type" value="computer">
+      <input type="radio" name="player-1-type" value="computer" disabled>
     </div>
 
     <div class="player-mark-group radio-group">
@@ -25,13 +25,13 @@ const template = /*html*/`
   <div class="set-players-modal__player-form player-form">
     <div class="player-name-group">
       <div class="player-name-group__label">Name:</div>
-      <input class="player-name-group__input" type="text" placeholder="Danya">
+      <input class="player-name-group__input" spellcheck="false" type="text" placeholder="Danya">
     </div>
 
     <div class="player-type-group radio-group">
       <input type="radio" name="player-2-type" value="human">
       <input type="radio" name="player-2-type" value="random" checked>
-      <input type="radio" name="player-2-type" value="computer">
+      <input type="radio" name="player-2-type" value="computer" disabled>
     </div>
 
     <div class="player-mark-group radio-group">
@@ -78,6 +78,16 @@ const renderModal = () => {
     player.controller = controllerFactories[$checkedTypeRadio.value]();
   }
 
+  const setFormWithPlayer = ($playerForm, player) => {
+    const $nameInput = $playerForm.querySelector('.player-name-group__input');
+    const $neededTypeRadio = $playerForm.querySelector(`.player-type-group input[value="${player.controller.name}"]`);
+    const $neededMarkRadio = $playerForm.querySelector(`.player-mark-group input[value="${player.mark}"]`);
+
+    $nameInput.value = player.name;
+    $neededTypeRadio.checked = true;
+    $neededMarkRadio.checked = true;
+  }
+
   $setPlayersButton.addEventListener('click', (e) => {
     setPlayerWithForm($playerForm1, player1);
     setPlayerWithForm($playerForm2, player2);
@@ -95,6 +105,8 @@ const renderModal = () => {
   $modal.openModalWithPlayers = (p1, p2) => {
     player1 = p1;
     player2 = p2;
+    setFormWithPlayer($playerForm1, p1);
+    setFormWithPlayer($playerForm2, p2);
     $modal.showModal();
   };
 
