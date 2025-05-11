@@ -238,9 +238,6 @@ body {
 .radio-group input[type=radio][value="random"] {
   background-image: url(images/dice-white.svg);
 }
-.radio-group input[type=radio][value="computer"] {
-  background-image: url(images/robot-white.svg);
-}
 .radio-group input[type=radio][value="x"] {
   background-image: url(images/cross-white.svg);
 }
