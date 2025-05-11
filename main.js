@@ -19,14 +19,15 @@ const $setPlayersModal = renderSetPlayersModal();
 const $playRoundButton = document.querySelector('.play-round-button');
 const $resetGameButton = document.querySelector('.reset-game-button');
 
+display.updateNames();
+
 $root.appendChild($infoModal);
 $root.appendChild($setPlayersModal);
-
 $setPlayersModal.openModalWithPlayers(p1, p2);
 
+$setPlayersModal.addEventListener('close', display.updateNames);
 $playRoundButton.addEventListener('click', game.play);
 $resetGameButton.addEventListener('click', game.reset);
-
 game.setOnOver((winner) => { 
   $infoModal.showModalWithText(winner ? `${winner.name} won!!!` : 'Draw!!!');
 });

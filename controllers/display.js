@@ -12,24 +12,24 @@ const createDisplayController = (board, player1, player2) => {
     });
   }
 
-  const displayNames = () => {
-    $player1Name.textContent = player1.name;
-    $player2Name.textContent = player2.name;
+  const updateNames = () => {
+    $player1Name.textContent = `${player1.name}:`;
+    $player2Name.textContent = `${player2.name}:`;
   }
 
-  const displayScore = () => {
+  const updateScores = () => {
     $player1Score.textContent = player1.getScore();
     $player2Score.textContent = player2.getScore();
   }
 
   const update = () => {
-    displayScore()
+    updateScores()
     board.getBoard().flat().forEach((cell, index) => {
         $cells[index].dataset.mark = cell;
     });
   }
   
-  return { update, reset }
+  return { update, reset, updateNames }
 };
 
 
