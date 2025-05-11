@@ -20,8 +20,6 @@ const createHumanPlayerController = () => {
     const targetPos = {x: targetIndex % 3, y: Math.floor(targetIndex / 3)}; 
     
     if (!availableCells.some(e => {
-      console.log(String(e))
-      console.log(String(targetPos));
       return JSON.stringify(e) === JSON.stringify(targetPos);
     })) {
       return
@@ -42,7 +40,7 @@ const createHumanPlayerController = () => {
     thisTurn = null;
   }
 
-  return { playTurn, abort };
+  return { playTurn, abort, name: "human" };
 }
 
 export default createHumanPlayerController;

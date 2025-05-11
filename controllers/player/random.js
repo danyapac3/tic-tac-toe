@@ -15,7 +15,7 @@ const createRandomPlayerController = () => {
     clearTimeout(timeoutID);
   }
 
-  return { playTurn, abort };
+  return { playTurn, abort, name: "random" };
 }
 
 export default createRandomPlayerController;

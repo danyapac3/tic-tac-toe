@@ -4,7 +4,8 @@ import { createBoard } from "./entities/board.js";
 import { createDisplayController } from "./controllers/display.js";
 import { createRandomPlayerController } from "./controllers/player/random.js";
 import { createHumanPlayerController } from "./controllers/player/human.js";
-import renderInfoModal from "./components/info-modal.js"
+import renderInfoModal from "./components/info-modal.js";
+import renderSetPlayersModal from "./components/select-players-modal.js";
 
 const p1 = createPlayer('x', 'Danya', createRandomPlayerController());
 const p2 = createPlayer('o', 'Dan', createHumanPlayerController());
@@ -14,10 +15,14 @@ const game = createGame(p1, p2, gameBoard, display);
 
 const $root = document.querySelector('.root');
 const $infoModal = renderInfoModal();
+const $setPlayersModal = renderSetPlayersModal();
 const $playRoundButton = document.querySelector('.play-round-button');
 const $resetGameButton = document.querySelector('.reset-game-button');
 
 $root.appendChild($infoModal);
+$root.appendChild($setPlayersModal);
+
+$setPlayersModal.openModalWithPlayers(p1, p2);
 
 $playRoundButton.addEventListener('click', game.play);
 $resetGameButton.addEventListener('click', game.reset);
@@ -26,5 +31,3 @@ game.setOnOver((winner) => {
   $infoModal.showModalWithText(winner ? `${winner.name} won!!!` : 'Draw!!!');
 });
 
-const $modal = document.querySelector(".players-select-modal");
-$modal.showModal(); 

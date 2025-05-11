@@ -170,7 +170,7 @@ body {
 }
 
 
-.players-select-modal:open {
+.set-players-modal:open {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -212,6 +212,8 @@ body {
 }
 .radio-group {
   display: flex;
+  border-radius: 4px;
+  overflow: hidden;
 }
 .radio-group input[type=radio] {
   flex-grow: 1;
@@ -233,6 +235,9 @@ body {
 .radio-group input[type=radio][value="human"] {
   background-image: url(images/human-white.svg);
 }
+.radio-group input[type=radio][value="random"] {
+  background-image: url(images/dice-white.svg);
+}
 .radio-group input[type=radio][value="computer"] {
   background-image: url(images/robot-white.svg);
 }
@@ -248,7 +253,7 @@ body {
 .player-mark-group {
   border-radius: 4px;
 }
-.select-players-button {
+.set-players-button {
   grid-column: 1 / -1;
   height: 35px;
   border-radius: 8px;
@@ -257,9 +262,9 @@ body {
   background-color: white;
   transition: background-color 0.2s;
 }
-.select-players-button:hover {
+.set-players-button:hover {
   background-color: rgb(249, 249, 249);
 }
-.select-players-button:active {
+.set-players-button:active {
   background-color:rgb(243, 243, 243);
 }

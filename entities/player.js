@@ -1,11 +1,11 @@
 const createPlayer = (mark, name, controller) => {
   let score = 0;
 
-  const resetScore = () => score = 0;
-  const increaseScore = () => {score++};
-  const getScore = () => { return score }
+  const resetScore = () => { score = 0 };
+  const increaseScore = () => { score++ };
+  const getScore = () => { return score };
 
-  return {name, mark, increaseScore, getScore, resetScore, controller};
+  return {name, mark, controller, increaseScore, getScore, resetScore};
 }
 
 export default createPlayer
